@@ -1,9 +1,25 @@
 import React, {Component} from  'react'
 import logo from '../logo.svg';
 import './home.less';
+import {Statistic, Icon,Rate} from 'antd'
 
 class Home extends Component {
+  constructor(props) {
+    super(props)
+    this.state = {
+      num: 999
+    }
+  }
+
+
+  handleClick = () => {
+    const {num} = this.state
+    this.setState({
+      num: num + 1
+    })
+  }
   render () {
+    const {num} = this.state
     return (
       <div className="App">
         <header className="App-header">
@@ -19,6 +35,15 @@ class Home extends Component {
           >
             go a 雄 主页
           </a>
+          <div className='click' onClick={this.handleClick.bind(this)}>
+            <Statistic 
+              valueStyle={{ color: '#61dafb' }} 
+              title="" 
+              value={num} 
+              prefix={<Icon type="like" />} 
+            />
+          </div>
+          <Rate allowHalf defaultValue={2.5} />
         </header>
       </div>
     )
