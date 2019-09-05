@@ -3,6 +3,8 @@ import logo from '../logo.svg';
 import './home.less';
 import {Statistic, Icon,Rate} from 'antd'
 
+import HookTest  from '../hookTest/hookTest.js'
+
 class Home extends Component {
   constructor(props) {
     super(props)
@@ -44,6 +46,7 @@ class Home extends Component {
             />
           </div>
           <Rate allowHalf defaultValue={2.5} />
+          <HookTest />
         </header>
       </div>
     )
