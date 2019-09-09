@@ -2,7 +2,9 @@ import React, {Component} from  'react'
 import logo from '../logo.svg';
 import './home.less';
 import {Statistic, Icon,Rate} from 'antd'
+import axios from 'axios'
 
+import http from '../server'
 import HookTest  from '../hookTest/hookTest.js'
 
 class Home extends Component {
@@ -11,6 +13,23 @@ class Home extends Component {
     this.state = {
       num: 999
     }
+  }
+
+  selectA = () => {
+    // http.post('/selectArticle').then((res) => {
+    //   console.log(res)
+    // })
+    axios.get('/selectArticle', 
+    {
+        firstName: 'Fred',
+        lastName: 'Flintstone'
+    })
+      .then(function (response) {
+          console.log(response);
+      })
+      .catch(function (error) {
+          console.log(error);
+      });
   }
 
 
@@ -25,6 +44,7 @@ class Home extends Component {
     return (
       <div className="App">
         <header className="App-header">
+          <button onClick={this.selectA()}>点击查询</button>
           <img src={logo} className="App-logo" alt="logo" />
           <p>
             感谢a雄一路手摸手教我搭建！
